@@ -8,10 +8,10 @@ import java.util.List;
 
 public class BillingEngineImpl implements BillingEngine{
   @Override
-  public double getOutstanding(Loan loan) {
+  public long getOutstanding(Loan loan) {
     List<LoanScheduleEntry> unpaid = loan.getSchedule().stream().filter(x -> !x.isPaid()).toList();
 
-    double outStanding = 0;
+    long outStanding = 0;
     for (LoanScheduleEntry loanScheduleEntry : unpaid) {
       outStanding += loanScheduleEntry.getAmount();
     }
@@ -21,16 +21,18 @@ public class BillingEngineImpl implements BillingEngine{
 
   @Override
   public boolean isDelinquent(Loan loan, int currentWeek) {
-    int delinquentCount = 2;
+    int delinquentCount = 0;
 
     for (int i = 0; i < currentWeek; i++) {
       LoanScheduleEntry currentEntry = loan.getSchedule().get(i);
 
-      if (!currentEntry.isPaid()) {
-        delinquentCount--;
+      if (currentEntry.isPaid()) {
+        delinquentCount = 0;
+        continue;
       }
 
-      if (delinquentCount == 0) {
+      delinquentCount++;
+      if (delinquentCount == 2) {
         return true;
       }
     }
@@ -39,7 +41,7 @@ public class BillingEngineImpl implements BillingEngine{
   }
 
   @Override
-  public boolean makePayment(Loan loan, double amount, int currentWeek) {
+  public boolean makePayment(Loan loan, long amount, int currentWeek) {
     LoanScheduleEntry entry = loan.getSchedule().get(currentWeek - 1);
 
     if (amount != entry.getAmount()) {

@@ -12,14 +12,14 @@ public class Main {
     BillingEngine billingEngine = new BillingEngineImpl();
 
     // Week 1: pay on time
-    billingEngine.makePayment(loan1, 110_000, 1);
+    billingEngine.makePayment(loan1, 110_000L, 1);
     // Week 2: skip payment
     // Week 3: skip payment
     System.out.println("Week 3 - Delinquent: " + billingEngine.isDelinquent(loan1, 3)); // true
 
     // repayment week 2 & 3
-    billingEngine.makePayment(loan1, 110_000, 2);
-    billingEngine.makePayment(loan1, 110_000, 3);
+    billingEngine.makePayment(loan1, 110_000L, 2);
+    billingEngine.makePayment(loan1, 110_000L, 3);
 
     System.out.println("Week 3 - Delinquent: " + billingEngine.isDelinquent(loan1, 3)); // false
     System.out.println("Week 3 - Outstanding Bill: " + billingEngine.getOutstanding(loan1)); // 5,170,000

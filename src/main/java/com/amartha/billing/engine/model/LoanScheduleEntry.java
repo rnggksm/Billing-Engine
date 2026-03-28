@@ -2,10 +2,10 @@ package com.amartha.billing.engine.model;
 
 public class LoanScheduleEntry {
   private final int weekNumber;
-  private final double amount;
+  private final long amount;
   private boolean paid;
 
-  public LoanScheduleEntry(int weekNumber, double amount) {
+  public LoanScheduleEntry(int weekNumber, long amount) {
     this.weekNumber = weekNumber;
     this.amount = amount;
     this.paid = false;
@@ -15,7 +15,7 @@ public class LoanScheduleEntry {
     return weekNumber;
   }
 
-  public double getAmount() {
+  public long getAmount() {
     return amount;
   }
 

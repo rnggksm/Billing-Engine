@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Loan {
   private final int loanId;
-  private final double principal;
+  private final long principal;
   private final double interestRate;
   private final List<LoanScheduleEntry> schedule;
 
-  public Loan(int loanId, double principal, double interestRate, List<LoanScheduleEntry> schedule) {
+  public Loan(int loanId, long principal, double interestRate, List<LoanScheduleEntry> schedule) {
     this.loanId = loanId;
     this.principal = principal;
     this.interestRate = interestRate;
@@ -19,7 +19,7 @@ public class Loan {
     return loanId;
   }
 
-  public double getPrincipal() {
+  public long getPrincipal() {
     return principal;
   }
 
