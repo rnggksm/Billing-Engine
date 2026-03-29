@@ -3,7 +3,6 @@ package com.amartha.billing.engine.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Loan {
   private static int idCounter = 1;
