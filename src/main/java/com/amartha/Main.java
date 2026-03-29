@@ -1,6 +1,5 @@
 package com.amartha;
 
-import com.amartha.billing.engine.factory.LoanFactory;
 import com.amartha.billing.engine.model.Loan;
 import com.amartha.billing.engine.service.BillingEngine;
 import com.amartha.billing.engine.service.BillingEngineImpl;
@@ -8,7 +7,7 @@ import com.amartha.billing.engine.service.BillingEngineImpl;
 public class Main {
   public static void main(String[] args) {
     // Simulation:
-    Loan loan1 = LoanFactory.createLoan();
+    Loan loan1 = new Loan();
     BillingEngine billingEngine = new BillingEngineImpl();
 
     // Week 1: pay on time
