@@ -10,6 +10,9 @@ public class Main {
     Loan loan1 = new Loan();
     BillingEngine billingEngine = new BillingEngineImpl();
 
+    // show initial outstanding
+    System.out.println("Week 0 - Outstanding: " + billingEngine.getOutstanding(loan1)); // 5,500,000
+
     // Week 1: pay on time
     billingEngine.makePayment(loan1, 110_000L, 1);
     // Week 2: skip payment
@@ -21,6 +24,12 @@ public class Main {
     billingEngine.makePayment(loan1, 110_000L, 3);
 
     System.out.println("Week 3 - Delinquent: " + billingEngine.isDelinquent(loan1, 3)); // false
-    System.out.println("Week 3 - Outstanding Bill: " + billingEngine.getOutstanding(loan1)); // 5,170,000
+    System.out.println("Week 3 - Outstanding: " + billingEngine.getOutstanding(loan1)); // 5,170,000
+
+    // show loan schedule
+    System.out.println("\n--- Loan Schedule ---");
+    loan1.getInstallments().forEach(i ->
+        System.out.println("Week " + i.getWeekNumber() + ": " + i.getAmount() + " | Paid: " + i.isPaid())
+    );
   }
 }
